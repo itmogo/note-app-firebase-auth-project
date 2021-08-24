@@ -18,7 +18,7 @@ export class App extends Component{
   render(){
     return (
       <div style={{                 
-        backgroundImage: `url("background.jpg")`,
+        backgroundImage: `url("green-galaxy.jpg")`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover"     
