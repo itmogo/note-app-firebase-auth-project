@@ -1,27 +1,26 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { registerWithEmail, loginWithGoogle } from "../store/authActions";
+import { loginWithEmail, loginWithGoogle } from "../store/authActions";
 
-function Register(props) {
-  //check if user is logged in
+function Login(props) {
+  // check if user is logged in
   if(!props.auth.isLoaded) return null;
 
-  //if user is logged in redirect to register page
-  if (props.auth.uid) props.history.push('/');
-
+  // if user is logged in redirect user to the login page
+  if(props.auth.uid) props.history.push('/');
   const handleSubmit = (e) => {
     e.preventDefault();
     let email = e.target.elements.email.value;
     let password = e.target.elements.pass.value;
-    props.registerWithEmail(email, password);
+    props.loginWithEmail(email, password);
   };
 
   return (
     <div>
-      <h1>Register Now</h1>
-      <form className="formShadow" onSubmit={handleSubmit}>
+      <h1>Login Now</h1>
+      <form onSubmit={handleSubmit}>
         <div>
-          <Form.Group controlId="formBasicEmail">
             <Form.Label>
               <b>Email Address</b>
             </Form.Label>
@@ -30,11 +29,10 @@ function Register(props) {
               placeholder="Enter your email address"
               name="email"
               required
-            />
-          </Form.Group>
+            />          
         </div>
         <br />
-        <Form.Group controlId="formBasicEmail">
+       
           <Form.Label>
             <b>Password</b>
           </Form.Label>
@@ -44,7 +42,7 @@ function Register(props) {
             name="pass"
             required
           />
-        </Form.Group>
+        
         <br />
         <div>
           {/* the create user button call the handleSubmit functon when clicked */}
@@ -58,6 +56,7 @@ function Register(props) {
               alt="google button"
             />
           </Button>
+          
         </div>
       </form>
     </div>
@@ -71,8 +70,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  registerWithEmail,
+  loginWithEmail,
   loginWithGoogle,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -94,4 +94,5 @@ let mapDispatchToProps = {
 };
 
 let mapStateToProps = () => {};
+
 export default connect(mapStateToProps, mapDispatchToProps)(EditUserForm);
